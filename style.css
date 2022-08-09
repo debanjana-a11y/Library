@@ -1,0 +1,11 @@
+* {
+    border: 2px solid red;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/Images/background_image.jpg");
+    background-repeat: no-repeat;
+    background-color: rgb(16, 3, 3);
+    background-size: 100%;
+}
