@@ -1,11 +1,120 @@
 * {
-    border: 2px solid red;
+    margin: 0;
+    padding: 0;
+    /* border: 2px solid red; */
     box-sizing: border-box;
+    font-family: cursive;
 }
 
-body {
-    background-image: url("/Images/background_image.jpg");
+html, body {
+    /* background-image: url("/Images/background_image.jpg");
     background-repeat: no-repeat;
     background-color: rgb(16, 3, 3);
-    background-size: 100%;
+    background-size: 100%; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 40vh;
+    background-image: url("/Images/background_image.jpg");
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+}
+
+header p {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+}
+
+.tablinks {
+    background-color: #fdf5f5;
+    font-size: 20px;
+    flex: 1;
+}
+
+.tablinks:hover{
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.tablinks.active{
+    background-color: #bbb;
+}
+
+.tabcontent {
+    display: none;
+    font-size: 20px;
+    font-style: oblique;
+    color: brown;
+}
+
+.new_book_add {
+    background-color: blue;
+    border-radius: 50%;
+    position: fixed;
+    float: right;
+    bottom: 2rem;
+    right: 2rem;
+    height: 50px;
+    width: 50px;
+}
+.material_icons {
+    font-family: 'Material Icons';
+    font-size: 30px;
+    color: white;
+    font-weight: bolder;
+}
+
+.book_info {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#book_table_container {
+    width: 100%;
+    margin: 2em;
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+/* th {
+    width: 50em;
+}
+
+tr {
+    overflow: scroll;
+} */
+
+td {
+    size: 10px;
+    overflow: display;
+}
+
+.table_header {
+    /* height: 10px; */
+    font-size: 1.2em;
+    background-color: rgb(79, 45, 45);
+    color: white;
+}
+
+.book_table_content {
+    text-align: center;
 }

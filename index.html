@@ -5,10 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Library</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
-    
+    <header>
+        <center><p>Virtual Library</p></center>
+    </header>
+    <div class="tabs">
+        <button class="tablinks" onclick="">Classic</button>
+        <button class="tablinks" onclick="">Fiction</button>
+    </div>
+    <div id="Classic" class="tabcontent">
+        <h2>Classic book list</h2>
+    </div>
+    <div id="Fiction" class="tabcontent">
+        <h2>Fiction book list</h2>
+    </div>
+    <button class="new_book_add">
+        <span class="material_icons">add</span>
+    </button> 
+    <section class="book_info">
+        <table id="book_table_container">
+            <tbody class="table_header">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Page Count</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </tbody>
+            <tbody class="book_table_content">
+                <tr>
+                    <td> <p>Pride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and PrejudicePride and Prejudice</td></p> </td>
+                        
+                    <td>Jane Austin</td>
+                    <td>273</td>
+                    <td>
+                        <button class="book_read_status">Read</button>
+                    </td>
+                    <td>
+                        <button class="book_delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Little Women</td>
+                    <td>Louisa May Alcott</td>
+                    <td>200</td>
+                    <td>
+                        <button class="book_read_status">Not Read</button>
+                    </td>
+                    <td>
+                        <button class="book_delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
