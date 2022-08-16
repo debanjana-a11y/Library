@@ -1,3 +1,4 @@
+/*Each element is Book */
 let myLibrary = [
     {
         title: 'Pride and Prejudice',
@@ -39,10 +40,6 @@ Book.prototype.info = function() {
     return `${this.title}, ${this.author}, ${this.pages}, ${(this.read == true)? "Read": "Not read"}`;
 };
 
-Book.prototype.changeStat = function() {
-    return this.read = !this.read;
-};
-
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
@@ -58,23 +55,22 @@ function removeBookFromLibrary(index) {
 function changeReadStatus(title) {
     for(let i = 0; i < myLibrary.length; i++) {
         if (myLibrary[i].title === title) {
-            console.log(myLibrary[i].info());
-            return myLibrary[i].changeStat();
+            return myLibrary[i].read = !myLibrary[i].read;
         }
     }
     return -1;
 }
 
-toggle_status = function(title) {
+toggle_status = function(event, title) {
     if (title.length === 0) {
         alert("Book title can not be empty");
         return;
     } 
     const read_status = changeReadStatus(title);
     if (read_status === true) {
-        btn.innerText = "Read";
+        event.currentTarget.innerText = "Read";
     } else if (read_status === false) {
-        btn.innerText = "Unread";
+        event.currentTarget.innerText = "Unread";
     } else {
         alert("Invalid book index to change status");
     }
@@ -89,7 +85,7 @@ function updateTable(book) {
                         <td>${book.author}</td>
                         <td>${book.pages}</td>
                         <td>
-                            <button class="book_read_status" onclick="toggle_status('${book.title}')">${read_status}</button>
+                            <button class="book_read_status" onclick="toggle_status(event, '${book.title}')">${read_status}</button>
                         </td>
                         <td>
                             <button class="book_delete">Delete</button>
@@ -113,11 +109,6 @@ function updateTable(book) {
 // changeReadStatus(0);
 // console.log(myLibrary.map(e => e.info()));
 
-let btns = document.getElementsByClassName('book_read_status');
-for(let btn of btns) {
-    
-}
-
 function chageTab(event, book_category) {
     let tabcontent = document.getElementsByClassName("tabcontent");
     for(let i = 0; i < tabcontent.length; i++) {
@@ -135,8 +126,7 @@ function chageTab(event, book_category) {
 
 function render() {
     for(let i = 0; i < myLibrary.length; i++) {
-        const book = new Book(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].genre, myLibrary[i].read);
-        updateTable(book);
+        updateTable(myLibrary[i]);
     }
 }
 
