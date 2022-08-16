@@ -122,13 +122,17 @@ function chageTab(event, book_category) {
     }
 
     document.getElementById(book_category).style.display = "block";
-    event.currentTarget.className += " active";
+    if (event) event.currentTarget.className += " active";
+    else tablinks[0].className += " active";
 }
 
 function render() {
     for(let i = 0; i < myLibrary.length; i++) {
         updateTable(myLibrary[i]);
     }
+    /* Make first tab as default */
+    tablinks = document.getElementsByClassName("tablinks");
+    tablinks[0].onclick(null, 'Classic');
 }
 
 function openNewForm() {
