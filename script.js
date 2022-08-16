@@ -44,12 +44,27 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-function removeBookFromLibrary(index) {
-    if (index > myLibrary.length - 1) {
-        console.log("No such book to delete");
-        return;
+const tableBody = document.getElementsByClassName("book_table_content");
+
+function clearTable(title, genre) {
+    for(let i = 0; i < tableBody[genreList[genre]].rows.length; i++) {
+        let tr = tableBody[genreList[genre]].rows[i];
+        console.log(tr.firstElementChild);
+        if (tr.firstElementChild.innerText === title) {
+            tableBody[genreList[genre]].deleteRow(i);
+        }
     }
-    myLibrary.splice(index, 1);
+}
+
+function removeBookFromLibrary(title) {
+    for(let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === title) {
+            clearTable(myLibrary[i].title, myLibrary[i].genre);
+            myLibrary.splice(i, 1);
+            return;
+        }
+    }
+    alert("No book found with title "+ title);
 }
 
 function changeReadStatus(title) {
@@ -61,7 +76,7 @@ function changeReadStatus(title) {
     return -1;
 }
 
-toggle_status = function(event, title) {
+toggleReadStatus = function(event, title) {
     if (title.length === 0) {
         alert("Book title can not be empty");
         return;
@@ -78,36 +93,20 @@ toggle_status = function(event, title) {
 
 /* Display in HTML */
 function updateTable(book) {
-    const tableBody = document.getElementsByClassName("book_table_content");
     const read_status  = (book.read === true) ? "Read" : "Unread";
     const htmlBook = `<tr>
                         <td id="title">${book.title}</td>
                         <td>${book.author}</td>
                         <td>${book.pages}</td>
                         <td>
-                            <button class="book_read_status" onclick="toggle_status(event, '${book.title}')">${read_status}</button>
+                            <button class="book_read_status" onclick="toggleReadStatus(event, '${book.title}')">${read_status}</button>
                         </td>
                         <td>
-                            <button class="book_delete">Delete</button>
+                            <button class="book_delete" onclick="removeBookFromLibrary('${book.title}')">Delete</button>
                         </td>
                     </tr>`;
     tableBody[genreList[book.genre]].insertAdjacentHTML("beforeend", htmlBook);
 }
-
-// const book1 = new Book('Pride and Prejudice', 'Jane Austin', 273, true);
-// const book2 = new Book('Little Women', 'Louisa May Alcott', 200, false);
-// const book3 = new Book('Great Expectations', 'Charles Dickens', 300, true);
-
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
-
-// console.log(myLibrary.map(e => e.info()));
-// removeBookFromLibrary(0);
-// console.log(myLibrary.map(e => e.info()));
-
-// changeReadStatus(0);
-// console.log(myLibrary.map(e => e.info()));
 
 function chageTab(event, book_category) {
     let tabcontent = document.getElementsByClassName("tabcontent");
@@ -131,4 +130,4 @@ function render() {
 }
 
 render();
-console.log(myLibrary);
+
