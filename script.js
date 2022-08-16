@@ -1,17 +1,46 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        title: 'Pride and Prejudice',
+        author: 'Jane Austin',
+        pages: 273,
+        genre: 'Classic',
+        read: true
+    },
+    {
+        title: 'Little Women',
+        author: 'Louisa May Alcott',
+        pages: 200,
+        genre: 'Classic',
+        read: false
+    },
+    {
+        title: 'The Hobbit',
+        author: 'J. R. R. Tolkien',
+        pages: 310,
+        genre: 'Fiction',
+        read: true
+    }
+];
 
-function Book (title, author, pages, read) {
+let genreList = {
+    Classic: 0,
+    Fiction: 1
+};
+
+function Book (title, author, pages, genre, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.genre = genre;
     this.read = read;
-    this.info = function() { 
-        return `${this.title}, ${this.author}, ${this.pages}, ${(this.read == true)? "Read": "Not read"}`;
-    };
 }
 
+Book.prototype.info = function() { 
+    return `${this.title}, ${this.author}, ${this.pages}, ${(this.read == true)? "Read": "Not read"}`;
+};
+
 Book.prototype.changeStat = function() {
-    this.read = !this.read;
+    return this.read = !this.read;
 };
 
 function addBookToLibrary(book) {
@@ -26,30 +55,68 @@ function removeBookFromLibrary(index) {
     myLibrary.splice(index, 1);
 }
 
-function changeReadStatus(index) {
-    if (index > myLibrary.length - 1) {
-        console.log("No such book to delete");
-        return;
+function changeReadStatus(title) {
+    for(let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === title) {
+            console.log(myLibrary[i].info());
+            return myLibrary[i].changeStat();
+        }
     }
-    const book = myLibrary[index];
-    book.changeStat();
+    return -1;
 }
 
-const book1 = new Book('Pride and Prejudice', 'Jane Austin', 273, true);
-const book2 = new Book('Little Women', 'Louisa May Alcott', 200, false);
-const book3 = new Book('Great Expectations', 'Charles Dickens', 300, true);
+toggle_status = function(title) {
+    if (title.length === 0) {
+        alert("Book title can not be empty");
+        return;
+    } 
+    const read_status = changeReadStatus(title);
+    if (read_status === true) {
+        btn.innerText = "Read";
+    } else if (read_status === false) {
+        btn.innerText = "Unread";
+    } else {
+        alert("Invalid book index to change status");
+    }
+};
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
+/* Display in HTML */
+function updateTable(book) {
+    const tableBody = document.getElementsByClassName("book_table_content");
+    const read_status  = (book.read === true) ? "Read" : "Unread";
+    const htmlBook = `<tr>
+                        <td id="title">${book.title}</td>
+                        <td>${book.author}</td>
+                        <td>${book.pages}</td>
+                        <td>
+                            <button class="book_read_status" onclick="toggle_status('${book.title}')">${read_status}</button>
+                        </td>
+                        <td>
+                            <button class="book_delete">Delete</button>
+                        </td>
+                    </tr>`;
+    tableBody[genreList[book.genre]].insertAdjacentHTML("beforeend", htmlBook);
+}
 
-console.log(myLibrary.map(e => e.info()));
-removeBookFromLibrary(0);
-console.log(myLibrary.map(e => e.info()));
+// const book1 = new Book('Pride and Prejudice', 'Jane Austin', 273, true);
+// const book2 = new Book('Little Women', 'Louisa May Alcott', 200, false);
+// const book3 = new Book('Great Expectations', 'Charles Dickens', 300, true);
 
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
 
-changeReadStatus(0);
-console.log(myLibrary.map(e => e.info()));
+// console.log(myLibrary.map(e => e.info()));
+// removeBookFromLibrary(0);
+// console.log(myLibrary.map(e => e.info()));
+
+// changeReadStatus(0);
+// console.log(myLibrary.map(e => e.info()));
+
+let btns = document.getElementsByClassName('book_read_status');
+for(let btn of btns) {
+    
+}
 
 function chageTab(event, book_category) {
     let tabcontent = document.getElementsByClassName("tabcontent");
@@ -65,3 +132,13 @@ function chageTab(event, book_category) {
     document.getElementById(book_category).style.display = "block";
     event.currentTarget.className += " active";
 }
+
+function render() {
+    for(let i = 0; i < myLibrary.length; i++) {
+        const book = new Book(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].genre, myLibrary[i].read);
+        updateTable(book);
+    }
+}
+
+render();
+console.log(myLibrary);
