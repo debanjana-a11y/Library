@@ -50,3 +50,18 @@ console.log(myLibrary.map(e => e.info()));
 
 changeReadStatus(0);
 console.log(myLibrary.map(e => e.info()));
+
+function chageTab(event, book_category) {
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    for(let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (let link of tablinks) {
+        link.className = link.className.replace(" active", "");
+    }
+
+    document.getElementById(book_category).style.display = "block";
+    event.currentTarget.className += " active";
+}

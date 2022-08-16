@@ -44,12 +44,12 @@ header p {
     background-color: #fdf5f5;
     font-size: 20px;
     flex: 1;
-}
-
-.tablinks:hover{
-    background-color: #ddd;
     cursor: pointer;
 }
+
+/* .tablinks:hover{
+    background-color: #ddd;
+} */
 
 .tablinks.active{
     background-color: #bbb;
@@ -60,6 +60,13 @@ header p {
     font-size: 20px;
     font-style: oblique;
     color: brown;
+    font-weight: bold;
+}
+
+.tabcontent h2 {
+    text-align: center;
+    margin-top: 2%;
+    text-decoration: underline;
 }
 
 .new_book_add {
