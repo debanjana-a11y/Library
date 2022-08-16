@@ -101,10 +101,6 @@ table, th, td {
     border-collapse: collapse;
 }
 
-/* td {
-    size: 10px;
-} */
-
 .table_header {
     height: 3em;
     font-size: 1.2em;
@@ -122,4 +118,16 @@ table, th, td {
 
 .book_table_content tr {
     height: 2.5em;
+}
+
+.book_read_status, .book_delete {
+    height: 3em;
+    width: 90%;
+    background-color: darkgreen;
+    color: white;
+    cursor: pointer;
+}
+
+.book_delete {
+    background-color: red;
 }
