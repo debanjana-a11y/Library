@@ -42,6 +42,8 @@ Book.prototype.info = function() {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    console.log(book);
+    updateTable(book);
 }
 
 const tableBody = document.getElementsByClassName("book_table_content");
@@ -129,5 +131,30 @@ function render() {
     }
 }
 
+function openNewForm() {
+    const form = document.getElementsByClassName("new_book_form");
+    form[0].style.display = "block";
+}
+
+function closeForm() {
+    const form = document.getElementsByClassName("new_book_form");
+    form[0].style.display = "none";
+    // ResetForm
+}
+
+function submitBook() {
+    const title = document.getElementById("new_book_name").value;
+    const author = document.getElementById("new_book_author").value;
+    const pages = parseInt(document.getElementById("new_book_pages").value);
+    const genre = document.getElementById("new_book_genre").value;
+    const status = document.getElementById("new_book_status").value;
+
+    const book = new Book(title, author, pages, genre, status === "Yes"? true : false);
+    addBookToLibrary(book);
+    closeForm();
+}
+
 render();
+
+
 

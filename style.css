@@ -66,20 +66,28 @@ header p {
 }
 
 .new_book_add {
-    background-color: blue;
+    background-color: rgb(128, 62, 62);
+    border: none;
     border-radius: 50%;
     position: fixed;
     float: right;
-    bottom: 2rem;
-    right: 2rem;
-    height: 50px;
-    width: 50px;
+    bottom: 1rem;
+    right: 1rem;
+    height: 4em;
+    width: 4em;
+    align-items: center;
+    cursor: pointer;
+    vertical-align: middle;
 }
 .material_icons {
     font-family: 'Material Icons';
-    font-size: 30px;
+    font-size: 3em;
     color: white;
     font-weight: bolder;
+}
+
+.new_book_add:hover {
+    transform: scale(1.2);
 }
 
 .book_info {
@@ -126,4 +134,49 @@ table, th, td {
 
 .book_delete {
     background-color: red;
+}
+
+.new_book_form {
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin: 30px;
+    padding: 20px 0 20px 0;
+    align-self: center;
+    height: 30em;
+    width: 20em;
+    border: 1px solid black;
+    padding: 16px 20px;
+    font-size: 20px;
+    word-spacing: 1em;
+}
+
+.new_book_form label, select {
+    font-size: 1em;
+    margin: 1em;
+}
+
+.new_book_form input {
+    font-size: 1em;
+    margin: 1em;
+    background-color: #eee;
+    height: 2em;
+}
+
+.new_book_form select {
+    background-color: #eee;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button {
+    height: 2em;
+    width: 5em;
+    color: brown;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
 }
