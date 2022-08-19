@@ -141,13 +141,11 @@ function openNewForm() {
 }
 
 function closeForm() {
-    const form = document.getElementsByClassName("new_book_form");
-    form[0].style.display = "none";
-    document.getElementById("new_book_name").value = "";
-    document.getElementById("new_book_author").value = "";
-    document.getElementById("new_book_pages").value = "";
-    document.getElementById("new_book_genre").value = "Classic";
-    document.getElementById("new_book_status").value = "Yes";
+    const form_div = document.getElementsByClassName("new_book_form");
+    form_div[0].style.display = "none";
+    
+    const form = document.getElementById("form_book");
+    form.reset();
 }
 
 function submitBook() {
