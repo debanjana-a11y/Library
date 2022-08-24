@@ -59,11 +59,14 @@
     <div class="new_book_form">
         <form id ="form_book" autocomplete="off">
             <label for="title">Title</label>
-            <input type="text" placeholder="Book Name" name="title" id = "new_book_name" required>
+            <input type="text" placeholder="Book Name" name="title" id = "new_book_name" required minlength="4" maxlength="50">
+            <p class="error_text"></p>
             <label for="author">Author</label>
-            <input type="text" placeholder="Author Name" name="author" id = "new_book_author" required>
+            <input type="text" placeholder="Author Name" name="author" id = "new_book_author" required minlength="4" maxlength="50">
+            <p class="error_text"></p>
             <label for="pages">PageCount</label>
             <input type="number" placeholder="Page Count" name="pages" id = "new_book_pages" required>
+            <p class="error_text"></p>
             <div id="genre">
                 <label for="genre">Genre</label>
                 <select name="genre" id="new_book_genre" required>

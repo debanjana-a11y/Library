@@ -28,12 +28,14 @@ let genreList = {
     Fiction: 1
 };
 
-function Book (title, author, pages, genre, read) {
+class Book {
+    constructor (title, author, pages, genre, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.genre = genre;
     this.read = read;
+}
 }
 
 Book.prototype.info = function() { 
@@ -108,6 +110,7 @@ function updateTable(book) {
                         </td>
                     </tr>`;
     tableBody[genreList[book.genre]].insertAdjacentHTML("beforeend", htmlBook);
+    localStorage.setItem('books', JSON.stringify(myLibrary));
 }
 
 function chageTab(event, book_category) {
@@ -127,6 +130,11 @@ function chageTab(event, book_category) {
 }
 
 function render() {
+    // Local storage
+    if (localStorage.getItem('books') !== null) {
+        myLibrary = JSON.parse(localStorage.getItem('books'));
+    }
+
     for(let i = 0; i < myLibrary.length; i++) {
         updateTable(myLibrary[i]);
     }
