@@ -126,16 +126,22 @@ table, th, td {
     height: 2.5em;
 }
 
-.book_read_status, .book_delete {
+.book_read_status {
     height: 3em;
     width: 90%;
     background-color: darkgreen;
     color: white;
     cursor: pointer;
+    border: none;
 }
 
 .book_delete {
-    background-color: red;
+    border: none;
+}
+
+.fa-trash {
+    font-size: 30px;
+    color: red;
 }
 
 .new_book_form {

@@ -106,7 +106,7 @@ function updateTable(book) {
                             <button class="book_read_status" onclick="toggleReadStatus(event, '${book.title}')">${read_status}</button>
                         </td>
                         <td>
-                            <button class="book_delete" onclick="removeBookFromLibrary('${book.title}')">Delete</button>
+                            <button class="book_delete" onclick="removeBookFromLibrary('${book.title}')"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>`;
     tableBody[genreList[book.genre]].insertAdjacentHTML("beforeend", htmlBook);
