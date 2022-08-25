@@ -127,20 +127,22 @@ table, th, td {
 }
 
 .book_read_status {
-    height: 3em;
+    height: 2em;
     width: 90%;
     background-color: darkgreen;
     color: white;
     cursor: pointer;
     border: none;
+    font-size: large;
 }
 
 .book_delete {
     border: none;
+    cursor: pointer;
 }
 
 .fa-trash {
-    font-size: 30px;
+    font-size: 2em;
     color: red;
 }
 
