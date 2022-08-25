@@ -6,6 +6,11 @@
     font-family: cursive;
 }
 
+:root {
+    --color1 : rgb(79, 45, 45);
+    --color2 : white;
+}
+
 html, body {
     height: 100%;
     min-width: 450px;
@@ -58,7 +63,7 @@ header p {
     display: none;
     font-size: 20px;
     font-style: oblique;
-    color: brown;
+    color: var(--color1);
     font-weight: bold;
 }
 
@@ -69,15 +74,14 @@ header p {
 }
 
 .new_book_add {
-    background-color: rgb(79, 45, 45);
-    border: solid 2px white;
+    background-color: var(--color2);
     padding: .5rem;
     position: absolute;
     top: 25%;
     align-self: center;
     word-break: none;
     font-size: 1.5rem;
-    color: white;
+    color: var(--color1);
     cursor: pointer;
     white-space: nowrap;
 }
@@ -111,8 +115,8 @@ table, th, td {
 .table_header {
     height: 3em;
     font-size: 1.2em;
-    background-color: rgb(79, 45, 45);
-    color: white;
+    background-color: var(--color1);
+    color: var(--color2);
 }
 
 .table_header .title_col {
