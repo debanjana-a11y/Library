@@ -8,6 +8,7 @@
 
 html, body {
     height: 100%;
+    min-width: 450px;
     display: flex;
     flex-direction: column;
 }
@@ -68,19 +69,19 @@ header p {
 }
 
 .new_book_add {
-    background-color: rgb(128, 62, 62);
-    border: none;
-    border-radius: 50%;
-    position: fixed;
-    float: right;
-    bottom: 1rem;
-    right: 1rem;
-    height: 4em;
-    width: 4em;
-    align-items: center;
+    background-color: rgb(79, 45, 45);
+    border: solid 2px white;
+    padding: .5rem;
+    position: absolute;
+    top: 25%;
+    align-self: center;
+    word-break: none;
+    font-size: 1.5rem;
+    color: white;
     cursor: pointer;
-    vertical-align: middle;
+    white-space: nowrap;
 }
+
 .material_icons {
     font-family: 'Material Icons';
     font-size: 3em;
