@@ -65,6 +65,7 @@ function removeBookFromLibrary(title) {
         if (myLibrary[i].title === title) {
             clearTable(myLibrary[i].title, myLibrary[i].genre);
             myLibrary.splice(i, 1);
+            localStorage.setItem('books', JSON.stringify(myLibrary));
             return;
         }
     }
