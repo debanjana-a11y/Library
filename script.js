@@ -44,7 +44,6 @@ Book.prototype.info = function() {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-    console.log(book);
     updateTable(book);
 }
 
@@ -53,7 +52,6 @@ const tableBody = document.getElementsByClassName("book_table_content");
 function clearTable(title, genre) {
     for(let i = 0; i < tableBody[genreList[genre]].rows.length; i++) {
         let tr = tableBody[genreList[genre]].rows[i];
-        console.log(tr.firstElementChild);
         if (tr.firstElementChild.innerText === title) {
             tableBody[genreList[genre]].deleteRow(i);
         }
@@ -183,7 +181,6 @@ function resetErrorLog() {
     const error_texts = document.getElementsByClassName('error_text');
 
     [...error_texts].forEach(e => {
-        console.log(e);
         e.textContent = '';
         e.classList.remove('active');
     });
