@@ -150,6 +150,8 @@ function openNewForm() {
 }
 
 function closeForm() {
+    resetErrorLog();
+
     const form_div = document.getElementsByClassName("new_book_form");
     form_div[0].style.display = "none";
     
@@ -157,14 +159,47 @@ function closeForm() {
     form.reset();
 }
 
-function submitBook() {
-    const title = document.getElementById("new_book_name").value;
-    const author = document.getElementById("new_book_author").value;
-    const pages = parseInt(document.getElementById("new_book_pages").value);
-    const genre = document.getElementById("new_book_genre").value;
-    const status = document.getElementById("new_book_status").value;
+function validateForm(title, author) {
+    const errorT = title.nextElementSibling;
+    if (title.validity.valueMissing) {
+        errorT.textContent = 'Title can\'t be empty.';
+        return false;
+    } else if (title.validity.tooShort) {
+        errorT.textContent = `Title should be at least ${title.minLength} characters; you entered ${title.value.length}.`;
+        return false;
+    }
+    const errorA = author.nextElementSibling;
+    if (author.validity.valueMissing) {
+        errorA.textContent = 'Author Name can\'t be empty.';
+        return false;
+    } else if (author.validity.tooShort) {
+        errorA.textContent = `Title should be at least ${author.minLength} characters; you entered ${author.value.length}.`;
+        return false;
+    }
+    return true;
+}
 
-    const book = new Book(title, author, pages, genre, status === "Yes"? true : false);
+function resetErrorLog() {
+    const error_texts = document.getElementsByClassName('error_text');
+
+    [...error_texts].forEach(e => {
+        console.log(e);
+        e.textContent = '';
+        e.classList.remove('active');
+    });
+}
+
+function submitBook() {
+    const title = document.getElementById("new_book_name");
+    const author = document.getElementById("new_book_author");
+    const pages = parseInt(document.getElementById("new_book_pages"));
+    const genre = document.getElementById("new_book_genre");
+    const status = document.getElementById("new_book_status");
+
+    if (false === validateForm(title, author)) {
+        return;
+    }
+    const book = new Book(title.value, author.value, pages.value, genre.value, status.value === "Yes"? true : false);
     addBookToLibrary(book);
     closeForm();
 }
